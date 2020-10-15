@@ -4,26 +4,23 @@ body { font-family: sans-serif; }
 
 .container {
     display: grid;
-    grid-template-columns: 33vw 33vw 33vw;
+    grid-template-columns: 25vw 25vw 25vw 25vw;
+    grid-template-rows: 25vw 25vw 25vw 25vw;
 }
 
-.cube1 {
-    grid-row: 0;
+#c1 {
+  display: grid;
+  grid-column: 2;
 }
-.cube2{
-    grid-row:1;
+#c2 {
+  display: grid;
+  grid-column: 3;
 }
-.cube3{
-    grid-row: 2;
+#c3 {
+  display: grid;
+  grid-column: 4;
 }
 
-.scene {
-  width: 200px;
-  height: 200px;
-  border: 1px solid #CCC;
-  margin: 0px;
-  perspective: 300px;
-}
 
 .cube {
   width: 200px;
@@ -68,4 +65,4 @@ body { font-family: sans-serif; }
 .cube__face--top    { transform: rotateX( 90deg) translateZ(100px); }
 .cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
 
-label { margin-right: 10px; }
+label { margin-right: 0px; }
