@@ -39,6 +39,7 @@ let changeSide = (cube) => {
       break;
   }
 }
+
 //USE EVENT DELEGATION
 // let size = cube.length;
 // for(let i=0; i<size; i++) {
