@@ -1,0 +1,16 @@
+html, body {color: white;}
+
+.hero {background-color: #C7B8EA;}
+
+.button {background-color: #D8A7CA;}
+
+h1, h2 {color: #73A6AD;}
+
+.hero-foot {background-color: #9B97B2;}
+
+li {color: #9B97B2;}
+
+/* .control {display: inline-block;} */
+
+#tc {color: #9B97B2;}
+.control .button {display: inline-block;}
