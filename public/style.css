@@ -10,22 +10,6 @@ body { font-family: sans-serif; }
     grid-template-rows: repeat(5, 10vw);
 }
 
-#c1 {
-  display: grid;
-  grid-column: 1;
-  grid-row: 1;
-}
-#c2 {
-  display: grid;
-  grid-row: 1;
-  grid-column: 3;
-}
-#c3 {
-  display: grid;
-  grid-row: 2;
-  grid-column: 4;
-}
-
 
 /* .cube {
   width: 200px;
@@ -67,7 +51,7 @@ div.titles {
   position: absolute;
   width: 10vw;
   height: 10vw;
-  border: 0.1vw solid black;
+  border: 0.1vw solid black; 
   line-height: 10vw;
   font-size: 2vw;
   font-weight: bold;
