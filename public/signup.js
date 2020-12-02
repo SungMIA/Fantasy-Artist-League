@@ -1,3 +1,6 @@
+import { auth } from 'google-auth-library';
+
+const {admin, db, firebase, users} = require('./backend/firebase');
 
 export const signUpDisplay = function() {
     let signUp = $('<div class = "signup"><h1>Sign Up</h1>');
@@ -27,34 +30,34 @@ export const header = function() {
     return header;
 }
 
-export const handleSubmitSignUp = async function(event) {
-    event.preventDefault();
-    let user = event.target.value;
-    // let userObj = {
-    //     first = user.first,
-    //     last: user.last,
-    //     username: user.username,
-    //     email: user.email,
-    //     password: user.password
-    // }
-    // let userObjString = JSON.stringify(userObj);
+export const handleSubmitSignUp = function() {
+    let firstName= document.getElementById("first").value;
+    let lastName = document.getElementById("last").value;
+    let userName = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
 
-    console.log(user)
+    firebase 
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then((user) => {
+            return users.doc(user.uid).set({
+                first: firstName,
+                last: lastName,
+                username: userName,
+            });
+        }).then(() => {
+            let form = document.getElementById("")
+        })
+    
 
-    const createUser = await $.ajax({
-        method: 'post',
-        url: 'http://localhost:3040/user',
-        data: {
-            first: user.first,
-            last: user.last,
-            username: user.username,
-            email: user.email,
-            password: user.password
-            // o: userObjString
-        },
-        responseType: 'json'
-    });
 }
+
+export const renderMainPage = function() {
+    let root = $('#root');
+    
+}
+
 
 export const loadSignUpIntoDOM = function() {
     const root = $('#root');
