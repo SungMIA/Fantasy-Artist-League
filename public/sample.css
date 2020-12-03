@@ -2,35 +2,151 @@ html, body {
     color: white;
     width: 100%;
     height: 100%;
+    background-color: #C7B8EA;
+    text-align: center;
 }
 
-.hero {background-color: #C7B8EA;}
+.hero-body, .hero {
+    background-color: #C7B8EA;
+    width: 100vw;
+    height: 100vh;
+}
 
-.button {background-color: #D8A7CA;}
+.button {
+    background-color: #D8A7CA;
+    color: white;
+}
 
 h1, h2 {color: black;}
 
-.appName {
-    font-weight: bold;
-    font-size: 2em;
-    margin-left: auto;
-    margin-right: auto;
-    width: 8em;
+#signup, #login {
+    width: 7em;
+    height: 4em;
+    border-color: #D8A7CA;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    cursor: pointer;
+    outline: none;
 }
 
-.signup {
-    margin-left: auto;
-    margin-right: auto;
-    width: 5em;
+#signup:active, #login:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    background-color: lightpink;
 }
-.hero-foot {background-color: #9B97B2;}
+.sign-in, .sign-up{
+    padding: 10px;
+    border-color: #D8A7CA;
+}
 
-li {color: #9B97B2;}
+.sign-in:hover, .sign-up:hover {
+    background-color: #9b9b9b;
+}
 
-/* .control {display: inline-block;} */
+.navbar-item {
+    margin: 20px;
+}
 
-#tc {color: #9B97B2;}
+.hero-foot {
+    background-color: #9B97B2;
+    height: 10vh;
+}
+
+li {
+    color: #9B97B2;
+    height: 25px;
+}
+
+.control {display: inline-block;}
+
+/* #tc {color: #9B97B2;} */
 .control .button {display: inline-block;}
 
+field {
+    width: 100%;
+    padding: 5em;
+}
 
+input {
+    padding: 7px 30px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+}
 
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+}
+
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input[type=text]:focus {
+    border: 3px solid #555;
+}
+input[type=email]:focus {
+    border: 3px solid #555;
+}
+input[type=password]:focus {
+    border: 3px solid #555;
+}
+
+.control i {
+    position: absolute;
+    margin-top: 10px;
+}
+
+.control {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.fas {
+    padding: 10px;
+    min-width: 40px;
+    color: gray;
+}
+
+.hero-foot p {
+    text-align: center;
+    position: relative;
+    padding: 20px;
+}
+
+.label {
+    font-size: 25px;
+    padding: 20px;
+}
