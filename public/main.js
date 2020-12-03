@@ -140,7 +140,7 @@ container.addEventListener('mouseenter', event => {
 
 async function retrieveCubes() {
   // axios method to retrieve random song data, retrieve 50
-  for(let i=1; i<=25; i++) {
+  for(let i=1; i<=13; i++) {
     let cube = $('.container').append(cubeInterface(i))
   }
 }
@@ -174,28 +174,35 @@ const cubeInterface = function(i) {
   // $(f6).append(nf1,nf2)
 
   $(cube).append(f1, f2, f3, f4, f5, f6)
-  $(cube).css("display", "grid")
   let gridRow = 0
   let gridColumn = 0
   switch(i) {
-    case (i<=5):
-      gridRow = 1
-      gridColumn = i
-    case ((i>5) && (i<=10)):
-      gridRow = 2
-      gridColumn = i % 5
-    case ((i>10) && (i<=15)):
-      gridRow = 3
-      gridColumn = i % 5
-    case ((i>15) && (i<=20)):
-      gridRow = 4
-      gridColumn = i % 5
-    case ((i>20) && (i<=25)):
-      gridRow = 5
-      gridColumn = i % 5
-  }
-  $(cube).css("grid-column" ,gridColumn)
-  $(cube).css("grid-row",gridRow) 
+    case(i=1):
+      gridRow = 1;
+      gridColumn = 3;
+      break;
+    case(i=2): case(i=3): case(i=4):  
+      gridRow = 2;
+      gridColumn = i;
+      break;
+    case(i=5): case(i=6): case(i=7): case(i=8): case(i=9):   
+      gridRow = 3;
+      gridColumn = i-4;
+      break;
+    case(i=10): case(i=11): case(i=12):  
+      gridRow = 4;
+      gridColumn = i-8;
+      break;
+    case(i=13):
+      gridRow = 5;
+      gridColumn = 3;
+      break;
+  };
+  console.log(gridRow)
+  console.log(gridColumn)
+  $(cube).css("display", "grid")
+  $(cube).css("grid-column", gridColumn)
+  $(cube).css("grid-row", gridRow) 
   // $(f1).css('background-image', recentCovers[0])
   return cube
 }
@@ -209,5 +216,4 @@ const loadPage = async function() {
 $(function() {
   loadCover();
   loadPage();
-  getToken();
 })
