@@ -21,9 +21,9 @@
                                         <a class="navbar-item" href="sample.html">Home</a>
                                         <a class="navbar-item">Account</a>
                                         <a class="navbar-item">Leadership Board</a>
-                                        <span class="navbar-item">
+                                        <!-- <span class="navbar-item">
                                                 <button class=" button is-link sign-up" href="signup.html">Sign Up</button>
-                                         </span>
+                                         </span> -->
                                     </div>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                     </div>
         
                     <div class="hero-body">
-                        <div class="container">
+                        <div class="container loginForm">
                             <div class="content">
                                 <h1 class="title has-text-centered">Sign In</h1>
                                 <div class="field">
@@ -52,10 +52,23 @@
                                         <input id= "password" class="input text" type="password" placeholder="Password">
                                     </div>
                                 </div>
-                                <div class="field is grouped">
+                                <div class="field">
                                     <div class="control">
                                         <button class="button is-link" id="login">Login</button>
                                     </div>
+                                </div>
+                                <div class="field">
+                                        <div class="control">
+                                            <a class="button is-link" id="signupPage" href="signup.html">
+                                                <span>Sign Up</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                            </div>
+                            <br>
+                            <div class="field">
+                                <div class="control">
+                                    <h3 id="message"></h3>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +80,6 @@
                         </div>
                     </div>
                 </section>
-        <script src="node_modules/axios/dist/axios.js"></script>
         <script src="node_modules/jquery/dist/jquery.js"></script>
         <script src="signup.js" type="module"></script>
     </body>

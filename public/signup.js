@@ -1,7 +1,10 @@
 $(function() {
+
+    let message = $('#message');
+    message.html('');
+
     let firstName= document.getElementById("first");
     let lastName = document.getElementById("last");
-    let userName = document.getElementById("username");
     let email = document.getElementById("email");
     let password = document.getElementById("password");
     let signupButton = document.getElementById("signup");
@@ -9,34 +12,34 @@ $(function() {
     signupButton.addEventListener("click", event => {
         let firstN = firstName.value;
         let lastN = lastName.value;
-        let userN = userName.value;
         let mail = email.value;
         let pass = password.value;
         
-        firebase 
-        .auth()
-        .createUserWithEmailAndPassword(mail, pass)
-        .then((user) => {
-            db.collection("users").doc(user.uid).set({
-                first: firstN,
-                last: lastN,
-                username: userN,
-            });
-        }).catch(error => {
-            var errorCord = error.code;
-            var errorMessage = error.message;
-        });
+        let auth = firebase.auth();
+        const promise = auth.createUserWithEmailAndPassword(mail, pass);
+        promise.catch(error => message.html('<span class="has-text-danger">'+error.message+'</span>'));
     });
 
+    // realtime listener
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+            firebase.firestore().collection("users").doc(firebaseUser.uid).set({
+                email: mail,
+                first: firstN,
+                last: lastN,
+                password: pass
+            });
+        } else {
+        }
+    })
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
-            let popMessage = '<span class="has-text-successful">You have successfully logged in with '+firebaseUser.email+'</span>,'
-                            '<div>Start browsing different artists from Spotify and add it to your collection! <a class="button start" href="./userpage.html"> Lets Go!';
-            document.html(popMessage);
+            window.location.href = "index.html"; //change 
+            // add logout button
         } else {
-            let fail = '<span class="has-text-danger">You have not logged in successfully.</span>';
-            document.html(fail);
+            message.html('<span class="has-text-danger">You did not sign up successfully.</span>');
+            btnLogout.classList.add('hide');
         }
     })
 });
