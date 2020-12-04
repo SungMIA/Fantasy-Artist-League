@@ -1,6 +1,3 @@
-// import firebase from 'firebase/app';
-// Add the Firebase products that you want to use
-
 $(function() {
     let firstName= document.getElementById("first");
     let lastName = document.getElementById("last");
@@ -9,18 +6,18 @@ $(function() {
     let password = document.getElementById("password");
     let signupButton = document.getElementById("signup");
     
-    signupButton.addEventListener("mouseclick", event => {
+    signupButton.addEventListener("click", event => {
         let firstN = firstName.value;
         let lastN = lastName.value;
         let userN = userName.value;
         let mail = email.value;
         let pass = password.value;
         
-        firebase
+        firebase 
         .auth()
         .createUserWithEmailAndPassword(mail, pass)
         .then((user) => {
-            if(user){
+            if(user){ 
                 db.collection("users").doc(user.uid).set({
                     first: firstN,
                     last: lastN,
@@ -31,7 +28,7 @@ $(function() {
             var errorCord = error.code;
             var errorMessage = error.message;
         });
-    }, true);
+    }), true;
 
 
     // firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -43,5 +40,5 @@ $(function() {
     //         let fail = '<span class="has-text-danger">You have not logged in successfully.</span>';
     //         document.html(fail);
     //     }
-    // });
+    // })
 });
