@@ -3,10 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
+        <link rel="stylesheet" href="./node_modules/bulma/css/bulma.min.css">
         <link rel="stylesheet" href="sample.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
         <link href="https://fonts.googleapis.com/css?family=Shrikhand&display=swap" rel="stylesheet">
+        <script src="/__/firebase/8.1.1/firebase-app.js"></script>
+
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+        <script src="/__/firebase/8.1.1/firebase-analytics.js"></script>
+      
+        <!-- Add Firebase products that you want to use -->
+        <script src="/__/firebase/8.1.1/firebase-auth.js"></script>
+        <script src="/__/firebase/8.1.1/firebase-firestore.js"></script>
         <title>Sign Up Page</title>
     </head>
 
@@ -76,7 +84,7 @@
                                     </div>
                                     <div class="control">
                                         <i class="fas fa-lock"></i>
-                                        <input id="password" class="input text" type="password" placeholder="Password">
+                                        <input id="password" class="input text" type="text" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="field is grouped">
@@ -94,9 +102,32 @@
                         </div>
                     </div>
                 </section>
-        <script src="node_modules/axios/dist/axios.js"></script>
-        <script src="node_modules/jquery/dist/jquery.js"></script>
-        <script src="signup.js" type="module"></script>
-    </body>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src ="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyD3B4pVY_hz-8nPstgjKXv-EX-5dq49I2U",
+            authDomain: "fantasy-artist-league.firebaseapp.com",
+            databaseURL: "https://fantasy-artist-league.firebaseio.com",
+            projectId: "fantasy-artist-league",
+            storageBucket: "fantasy-artist-league.appspot.com",
+            messagingSenderId: "691127190203",
+            appId: "1:691127190203:web:e6ca654860f6381b2b9f9e",
+            measurementId: "G-26RTVNF95G"
+        };
 
+        // const firebase = require('firebase');
+        if(firebase.apps.length === 0){
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        let auth = firebase.auth();
+        let db = firebase.firestore();
+        let googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+        let emailAuthProvider = new firebase.auth.EmailAuthProvider();
+    </script> -->
+    <script src="__/firebase/init.js"></script>
+    <script src="signup.js" type="module"></script>
+</body>
+    
 </html>

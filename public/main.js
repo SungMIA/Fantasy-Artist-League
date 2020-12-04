@@ -1,3 +1,4 @@
+
 let container = document.querySelector('.container');
 let recentCovers = []
 let token = ""
@@ -65,21 +66,63 @@ async function loadCover() {
       case (i=0):
         $('.cube__face--front').css('background-image', 'url('+cover+')')
         $('.cube__face--front').css('background-size', 'cover')
+        $('.cube__face--front').append('<div>'+title+'<br>'+a+'</div>')
+        $('.cube__face--front').css('line-height', '1vw')
+        $('.cube__face--front').css('font-size', '0.4vw')
+        $('.cube__face--front').css('text-align', 'center')
+        $('.cube__face--front').css('padding-top', '2.5vw')
+        $('.cube__face--front').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+        break;
       case (i=1):
         $('.cube__face--right').css('background-image', 'url('+cover+')')
         $('.cube__face--right').css('background-size', 'cover')
+        $('.cube__face--right').append('<div>'+title+'<br>'+a+'</div>')
+        $('.cube__face--right').css('line-height', '1vw')
+        $('.cube__face--right').css('font-size', '0.4vw')
+        $('.cube__face--right').css('text-align', 'center')
+        $('.cube__face--right').css('padding-top', '2.5vw')
+        $('.cube__face--right').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+        break;
       case (i=2):
         $('.cube__face--back').css('background-image', 'url('+cover+')')
         $('.cube__face--back').css('background-size', 'cover')
+        $('.cube__face--back').append('<div>'+title+'<br>'+a+'</div>')
+        $('.cube__face--back').css('line-height', '1vw')
+        $('.cube__face--back').css('font-size', '0.4vw')
+        $('.cube__face--back').css('text-align', 'center')
+        $('.cube__face--back').css('padding-top', '2.5vw')
+        $('.cube__face--back').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+        break;
       case (i=3):
         $('.cube__face--left').css('background-image', 'url('+cover+')')
         $('.cube__face--left').css('background-size', 'cover')
+        $('.cube__face--left').append('<div>'+title+'<br>'+a+'</div>')
+        $('.cube__face--left').css('line-height', '1vw')
+        $('.cube__face--left').css('font-size', '0.4vw')
+        $('.cube__face--left').css('text-align', 'center')
+        $('.cube__face--left').css('padding-top', '2.5vw')
+        $('.cube__face--left').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+        break;
       case (i=4):
         $('.cube__face--top').css('background-image', 'url('+cover+')')
         $('.cube__face--top').css('background-size', 'cover')
+        $('.cube__face--top').append('<div>'+title+'<br>'+a+'</div>')
+        $('.cube__face--top').css('line-height', '1vw')
+        $('.cube__face--top').css('font-size', '0.4vw')
+        $('.cube__face--top').css('text-align', 'center')
+        $('.cube__face--top').css('padding-top', '2.5vw')
+        $('.cube__face--top').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+        break;
       case (i=5):
         $('.cube__face--bottom').css('background-image', 'url('+cover+')')
         $('.cube__face--bottom').css('background-size', 'cover')
+        $('.cube__face--bottom').append('<div>'+title+'<br>'+a+'</div>')
+        $('.cube__face--bottom').css('line-height', '1vw')
+        $('.cube__face--bottom').css('font-size', '0.4vw')
+        $('.cube__face--bottom').css('text-align', 'center')
+        $('.cube__face--bottom').css('padding-top', '2.5vw')
+        $('.cube__face--bottom').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+        break;
     }
   }
 }
@@ -213,7 +256,13 @@ const loadPage = async function() {
   retrieveCubes();
 }
 
+const mainCube = function() {
+  let cube = $('#c7.cube__face--front')
+  console.log(cube);
+}
+
+
 $(function() {
   loadCover();
   loadPage();
-})
+});
