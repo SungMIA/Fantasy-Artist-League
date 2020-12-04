@@ -7,12 +7,12 @@ body {
 }
 
 .container {
-    padding-top: 2vw;
+    padding-top: vw;
     padding-left: 27vw;
     display: grid;
-    gap: 2.5vw;
-    grid-template-columns: repeat(5, 7vw);
-    grid-template-rows: repeat(5, 7vw);
+    gap: 2vw;
+    grid-template-columns: repeat(5, 8vw);
+    grid-template-rows: repeat(5, 8vw);
 }
 
 
@@ -33,20 +33,20 @@ body {
 .cube.show-bottom { transform: translateZ(-100px) rotateX(  90deg); } */
 
 .cube {
-  width: 7vw;
-  height: 7vw;
+  width: 8vw;
+  height: 8vw;
   position: relative;
   transform-style: preserve-3d;
-  transform: translateZ(-3.5vw);
+  transform: translateZ(-4vw);
   transition: transform 1s;
 }
 
-.cube.show-front  { transform: translateZ(-3.5vw) rotateY(   0deg); }
-.cube.show-right  { transform: translateZ(-3.5vw) rotateY( -90deg); }
-.cube.show-back   { transform: translateZ(-3.5vw) rotateY(-180deg); }
-.cube.show-left   { transform: translateZ(-3.5vw) rotateY(  90deg); }
-.cube.show-top    { transform: translateZ(-3.5vw) rotateX( -90deg); }
-.cube.show-bottom { transform: translateZ(-3.5vw) rotateX(  90deg); }
+.cube.show-front  { transform: translateZ(-4vw) rotateY(   0deg); }
+.cube.show-right  { transform: translateZ(-4vw) rotateY( -90deg); }
+.cube.show-back   { transform: translateZ(-4vw) rotateY(-180deg); }
+.cube.show-left   { transform: translateZ(-4vw) rotateY(  90deg); }
+.cube.show-top    { transform: translateZ(-4vw) rotateX( -90deg); }
+.cube.show-bottom { transform: translateZ(-4vw) rotateX(  90deg); }
 
 div.titles {
   font-size: 1px;
@@ -54,10 +54,10 @@ div.titles {
 
 .cube__face {
   position: absolute;
-  width: 7vw;
-  height: 7vw;
+  width: 8vw;
+  height: 8vw;
   border: 0.1vw solid black; 
-  line-height: 7vw;
+  line-height: 8vw;
   font-size: 2vw;
   font-weight: bold;
   color: white;
@@ -79,12 +79,12 @@ div.titles {
 .cube__face--top    { transform: rotateX( 90deg) translateZ(100px); }
 .cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); } */
 
-.cube__face--front  { transform: rotateY(  0deg) translateZ(3.5vw); }
-.cube__face--right  { transform: rotateY( 90deg) translateZ(3.5vw); }
-.cube__face--back   { transform: rotateY(180deg) translateZ(3.5vw); }
-.cube__face--left   { transform: rotateY(-90deg) translateZ(3.5vw); }
-.cube__face--top    { transform: rotateX( 90deg) translateZ(3.5vw); }
-.cube__face--bottom { transform: rotateX(-90deg) translateZ(3.5vw); }
+.cube__face--front  { transform: rotateY(  0deg) translateZ(4vw); }
+.cube__face--right  { transform: rotateY( 90deg) translateZ(4vw); }
+.cube__face--back   { transform: rotateY(180deg) translateZ(4vw); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(4vw); }
+.cube__face--top    { transform: rotateX( 90deg) translateZ(4vw); }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(4vw); }
 
 
 label { margin-right: 0px; }
