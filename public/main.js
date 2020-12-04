@@ -67,18 +67,18 @@ async function loadCover() {
         $('.cube__face--front').css('background-image', 'url('+cover+')')
         $('.cube__face--front').css('background-size', 'cover')
         $('.cube__face--front').append('<div>'+title+'<br>'+a+'</div>')
-        $('.cube__face--front').css('line-height', '1vw')
-        $('.cube__face--front').css('font-size', '0.4vw')
+        $('.cube__face--front').css('line-height', '1.5vw')
+        $('.cube__face--front').css('font-size', '0.7vw')
         $('.cube__face--front').css('text-align', 'center')
-        $('.cube__face--front').css('padding-top', '2.5vw')
+        $('.cube__face--front').css('padding-top', '2vw')
         $('.cube__face--front').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
         break;
       case (i=1):
         $('.cube__face--right').css('background-image', 'url('+cover+')')
         $('.cube__face--right').css('background-size', 'cover')
         $('.cube__face--right').append('<div>'+title+'<br>'+a+'</div>')
-        $('.cube__face--right').css('line-height', '1vw')
-        $('.cube__face--right').css('font-size', '0.4vw')
+        $('.cube__face--right').css('line-height', '2vw')
+        $('.cube__face--right').css('font-size', '0.7vw')
         $('.cube__face--right').css('text-align', 'center')
         $('.cube__face--right').css('padding-top', '2.5vw')
         $('.cube__face--right').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
@@ -87,8 +87,8 @@ async function loadCover() {
         $('.cube__face--back').css('background-image', 'url('+cover+')')
         $('.cube__face--back').css('background-size', 'cover')
         $('.cube__face--back').append('<div>'+title+'<br>'+a+'</div>')
-        $('.cube__face--back').css('line-height', '1vw')
-        $('.cube__face--back').css('font-size', '0.4vw')
+        $('.cube__face--back').css('line-height', '2vw')
+        $('.cube__face--back').css('font-size', '0.7vw')
         $('.cube__face--back').css('text-align', 'center')
         $('.cube__face--back').css('padding-top', '2.5vw')
         $('.cube__face--back').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
@@ -97,8 +97,8 @@ async function loadCover() {
         $('.cube__face--left').css('background-image', 'url('+cover+')')
         $('.cube__face--left').css('background-size', 'cover')
         $('.cube__face--left').append('<div>'+title+'<br>'+a+'</div>')
-        $('.cube__face--left').css('line-height', '1vw')
-        $('.cube__face--left').css('font-size', '0.4vw')
+        $('.cube__face--left').css('line-height', '2vw')
+        $('.cube__face--left').css('font-size', '0.7vw')
         $('.cube__face--left').css('text-align', 'center')
         $('.cube__face--left').css('padding-top', '2.5vw')
         $('.cube__face--left').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
@@ -107,8 +107,8 @@ async function loadCover() {
         $('.cube__face--top').css('background-image', 'url('+cover+')')
         $('.cube__face--top').css('background-size', 'cover')
         $('.cube__face--top').append('<div>'+title+'<br>'+a+'</div>')
-        $('.cube__face--top').css('line-height', '1vw')
-        $('.cube__face--top').css('font-size', '0.4vw')
+        $('.cube__face--top').css('line-height', '2vw')
+        $('.cube__face--top').css('font-size', '0.7vw')
         $('.cube__face--top').css('text-align', 'center')
         $('.cube__face--top').css('padding-top', '2.5vw')
         $('.cube__face--top').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
@@ -117,8 +117,8 @@ async function loadCover() {
         $('.cube__face--bottom').css('background-image', 'url('+cover+')')
         $('.cube__face--bottom').css('background-size', 'cover')
         $('.cube__face--bottom').append('<div>'+title+'<br>'+a+'</div>')
-        $('.cube__face--bottom').css('line-height', '1vw')
-        $('.cube__face--bottom').css('font-size', '0.4vw')
+        $('.cube__face--bottom').css('line-height', '2vw')
+        $('.cube__face--bottom').css('font-size', '0.7vw')
         $('.cube__face--bottom').css('text-align', 'center')
         $('.cube__face--bottom').css('padding-top', '2.5vw')
         $('.cube__face--bottom').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
@@ -174,12 +174,17 @@ let changeSide = (cube) => {
 // Event Delegation Implementation:
 container.addEventListener('mouseenter', event => {
   let basicClass = event.target.className.substring(0, 4);
-  if(basicClass === 'cube') {
-    let cube = event.target;
+  let id = event.target.parentNode.id
+  let cube = event.target;
+  console.log(id)
+  console.log(basicClass)
+  if((basicClass === "cube") && (id != "c7")) {
     changeSide(cube);
-  }
-}, true)
-
+  } else {
+    console.log("here")
+    setInterval(function(){changeSide(cube)},3000);
+  };
+}, true);
 
 async function retrieveCubes() {
   // axios method to retrieve random song data, retrieve 50
@@ -215,9 +220,13 @@ const cubeInterface = function(i) {
   // $(f4).append(nd1,nd2)
   // $(f5).append(ne1,ne2)
   // $(f6).append(nf1,nf2)
-
-  $(cube).append(f1, f2, f3, f4, f5, f6)
-  let gridRow = 0
+  let mf1 = $('<div onclick="openPage("signup.html")" class="cube__face cube__face--front"></div>');
+  if(i == 7) {
+    $(cube).append(mf1, f2, f3, f4, f5, f6)
+  } else {
+    $(cube).append(f1, f2, f3, f4, f5, f6)
+  }
+   let gridRow = 0
   let gridColumn = 0
   switch(i) {
     case(i=1):
@@ -250,19 +259,17 @@ const cubeInterface = function(i) {
   return cube
 }
 
+
 const loadPage = async function() {
   let container = $('.container')
   container.empty()
   retrieveCubes();
 }
 
-const mainCube = function() {
-  let cube = $('#c7.cube__face--front')
-  console.log(cube);
-}
-
-
 $(function() {
   loadCover();
   loadPage();
+  $('#c7 .cube__face--front').append("<a href='signup.html'>Create New Account</a>");
+  let cube = document.getElementById('#c7')
+  changeSide(cube)
 });
