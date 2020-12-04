@@ -1,6 +1,3 @@
-// import firebase from 'firebase/app';
-// Add the Firebase products that you want to use
-
 $(function() {
 
     let message = $('#message');
@@ -18,11 +15,11 @@ $(function() {
         let mail = email.value;
         let pass = password.value;
         
-        firebase
+        firebase 
         .auth()
         .createUserWithEmailAndPassword(mail, pass)
         .then((user) => {
-            if(user){
+            if(user){ 
                 db.collection("users").doc(user.uid).set({
                     first: firstN,
                     last: lastN,
@@ -33,7 +30,7 @@ $(function() {
             var errorCord = error.code;
             var errorMessage = error.message;
         });
-    }, true);
+    }), true;
 
 
     // firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -45,5 +42,5 @@ $(function() {
     //         let fail = '<span class="has-text-danger">You have not logged in successfully.</span>';
     //         document.html(fail);
     //     }
-    // });
+    // })
 });
