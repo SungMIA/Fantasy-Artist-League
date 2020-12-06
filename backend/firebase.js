@@ -1,10 +1,10 @@
-const admin = require('firebase-admin');
-admin.initializeApp();
+// const admin = require('firebase-admin');
+// admin.initializeApp();
 
 const auth = firebase.auth();
 
-const db = admin.firestore();
-const users = db.collection("users");
+const db = firebase.firestore();
+const usersCollection = db.collection("users");
 
 const firebaseConfig = {
     apiKey: "AIzaSyD3B4pVY_hz-8nPstgjKXv-EX-5dq49I2U",
@@ -17,7 +17,6 @@ const firebaseConfig = {
     measurementId: "G-26RTVNF95G"
   };
 
-const firebase = require('firebase');
 firebase.initializeApp(firebaseConfig);
 
-module.exports = {admin, db, firebase, users, auth};
+module.exports = {db, usersCollection, auth};

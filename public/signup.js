@@ -39,10 +39,10 @@ $(function() {
 
         firebase.auth().onAuthStateChanged(firebaseUser => {
             if (firebaseUser){
-                users.doc(this.firebaseUser.uid).get().then(function (doc) {
+                users.doc(firebaseUser.currentUser.uid).get().then(function (doc) {
                     if (!doc.exists){
-                        users.doc(this.firebaseUser.uid).set({
-                            email: firebaseUser.email,
+                        users.doc(firebaseUser.uid).set({
+                            email: mail,
                             first: firstN,
                             last: lastN,
                             username: userN
