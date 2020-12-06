@@ -14,9 +14,21 @@ $(function() {
         let userN = userName.value;
         let mail = email.value;
         let pass = password.value;
-        let uid = null;
-        
-        firebase.auth().createUserWithEmailAndPassword(mail, pass)
+        function create() {
+            firebase.auth().createUserWithEmailAndPassword(mail, pass)
+        }
+        function store() {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    firebase.firestore().collection("users").doc(user.uid).set({
+                        first: firstN,
+                        last: lastN,
+                        username: userN,
+                    });
+                }
+            })
+        }
+        $.when(create()).then(store())
         //
         // RIGHT HERE:
         // 
@@ -25,11 +37,7 @@ $(function() {
         // it says currentUser is null. 
         // I want to: run the firestore line AFTER createUserWith... successfully terminates
         // Think i just have to use callback function 
-        firebase.firestore().collection("users").doc().set({
-            first: firstN,
-            last: lastN,
-            username: userN,
-        });
+        
             // let user = userCreds.user;
             // if(user){ 
             //     firebase.database().collection("users").doc(user.uid).set({
@@ -41,14 +49,11 @@ $(function() {
     }, true);
 
 
-    // firebase.auth().onAuthStateChanged(firebaseUser => {
-    //     if (firebaseUser) {
-    //         let popMessage = '<span class="has-text-successful">You have successfully logged in with '+firebaseUser.email+'</span>,'
-    //                         '<div>Start browsing different artists from Spotify and add it to your collection! <a class="button start" href="./userpage.html"> Lets Go!';
-    //         document.html(popMessage);
-    //     } else {
-    //         let fail = '<span class="has-text-danger">You have not logged in successfully.</span>';
-    //         document.html(fail);
-    //     }
-    // })
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+
+        } else {
+            let fail = '<span class="has-text-danger">You have not logged in successfully.</span>';
+        }
+    })
 });
