@@ -21,26 +21,34 @@ export const renderSearchBar = function() {
 }
 
 export const autocompletion = async function(event) {
-        let value = $(this).val();
-        let artistNames;
+        // let value = $(this).val();
+        // let artistNames;
 
-       await  $.ajax({
-            type: 'GET',
-            url: 'https://api.spotify.com/v1/search',
-            dataType: 'json',
-            data: {
-                type: 'artist',
-                q: value
-            }
-        }).then(function(res) {
-            artistNames = res.artists.items.map(function(artist) {
-                return artist.name;
-            })
-        });
+        // $.ajax({
+        //     type: 'GET',
+        //     url: 'https://api.spotify.com/v1/search',
+        //     dataType: 'json',
+        //     data: {
+        //         type: 'artist',
+        //         q: value
+        //     }
+        // }).then(function(res) {
+        //     artistNames = res.artists.items.map(function(artist) {
+        //         return artist.name;
+        //     })
+        // });
 
+        // $('#userInput').autocomplete({
+        //     source: artistNames
+        // });   
+        let tags = [
+            "helen",
+            "sung",
+            "sophia"
+        ];
         $('#userInput').autocomplete({
-            source: artistNames
-        });     
+            source: tags
+        });
 }
 
 export const renderPage = function() {

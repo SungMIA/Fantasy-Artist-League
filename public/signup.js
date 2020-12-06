@@ -1,7 +1,6 @@
 $(function() {
 
-    let message = $('#message');
-    message.html('');
+    
 
     let firstName= document.getElementById("first");
     let lastName = document.getElementById("last");
