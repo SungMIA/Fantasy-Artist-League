@@ -41,6 +41,7 @@ $(function() {
     }, true);
 
 
+<<<<<<< HEAD
     // firebase.auth().onAuthStateChanged(firebaseUser => {
     //     if (firebaseUser) {
     //         let popMessage = '<span class="has-text-successful">You have successfully logged in with '+firebaseUser.email+'</span>,'
@@ -51,4 +52,25 @@ $(function() {
     //         document.html(fail);
     //     }
     // })
+=======
+        firebase.auth().onAuthStateChanged(firebaseUser => {
+            if (firebaseUser){
+                users.doc(firebaseUser.currentUser.uid).get().then(function (doc) {
+                    if (!doc.exists){
+                        users.doc(firebaseUser.uid).set({
+                            email: mail,
+                            first: firstN,
+                            last: lastN,
+                            username: userN
+                        }).then(function () {
+                            window.location.href = 'index.html';
+                        }).catch(error => console.log(error.message));
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                })
+            } 
+        });
+    // }), true;
+>>>>>>> 9d2a12ad54da61689865da6b8cd317d9c7b5cbaa
 });

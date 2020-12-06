@@ -1,0 +1,49 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    background-color: lightskyblue;
+    color: white;
+}
+
+#title, #collection {
+    margin-top: 3%;
+    text-align: center;
+}
+
+#logout {
+    text-align: center;
+    margin-right: 10%;
+    float: right;
+    height: 30px;
+    width: 70px;
+    background-color: pink;
+}
+
+form.searchForm input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    width: 55%;
+    background: #f1f1f1;
+    margin-top: 8%;
+    margin-left: 5%;
+
+}
+
+form.searchForm button {
+    float: right;
+    width: 10%;
+    padding: 10px;
+    background: pink;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    cursor: pointer;
+    margin-top: 8%;
+}
+
+form.searchForm::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
