@@ -3,7 +3,7 @@ admin.initializeApp();
 
 const auth = firebase.auth();
 
-const db = admin.firestore();
+const db = firebase.firestore();
 const users = db.collection("users");
 
 const firebaseConfig = {
@@ -18,6 +18,8 @@ const firebaseConfig = {
   };
 
 const firebase = require('firebase');
+const firestore = require('firebase/firestore')
 firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
-module.exports = {admin, db, firebase, users, auth};
+module.exports = {admin, db, firestore, firebase, database, users, auth};
