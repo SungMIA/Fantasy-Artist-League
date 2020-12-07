@@ -47,6 +47,6 @@ $(function() {
             //     });
             // }
 
-        window.location.href = 'userAccount.html';
+        // window.location.href = 'userAccount.html';
     }, true);
 });

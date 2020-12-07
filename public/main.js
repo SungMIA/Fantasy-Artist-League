@@ -1,5 +1,6 @@
 
 let container = document.querySelector('.container')
+let face = document.querySelector('.cube__face')
 let recentCovers = []
 let token = ""
 let involved = []
@@ -193,14 +194,23 @@ container.addEventListener('mouseenter', event => {
   //   changeSide(cube);
   //   }, 1500);
 }, true);
-
-// container.addEventListener('click', event => {
-//     let id = event.target.id
-//     firebase.auth().onAuthStateChanged(function(user) {
-//     if (user) {
-//         firebase.firestore().collection("users").doc(user.uid).set(id);
-//     }
-// }, true);
+let i = 0; 
+container.addEventListener('click', event => {
+    let id = event.target.id
+    let check = event.target.id.substring(0,1)
+    let child = event.target.querySelector('div').innerText
+    console.log(child)
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user && (check != "c")) {
+          console.log("Here")
+          i++
+          let x = i + "i"
+          firebase.firestore().collection("users").doc(user.uid).set({
+            songs: {[i]: child, [x]: id}
+          }, {merge: true});
+      }
+    })
+});
 
 
 async function retrieveCubes() {
@@ -288,5 +298,4 @@ $(function() {
   loadPage();
   $('#c7 .cube__face--front').append("<a href='signup.html'>Create New Account</a>");
   $('#c7 .cube__face--back').append("<a href='top.html'>USA Top 50</a>");
-  $
 });
