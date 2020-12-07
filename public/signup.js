@@ -26,7 +26,9 @@ $(function() {
                         username: userN,
                     });
                 }
-            })
+            }).then(() => {
+                location.href = "/userAccount.html";
+            });
         }
         $.when(create()).then(store())
         //
@@ -47,7 +49,7 @@ $(function() {
             //     });
             // }
 
-        window.location.href = 'userAccount.html';
+        // location.href = "/userAccount.html";
     }, true);
 
 

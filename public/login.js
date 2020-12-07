@@ -10,16 +10,8 @@ $(function() {
         
     firebase.auth().signInWithEmailAndPassword(mail, pass)
         .then((user) => {
-            // if(user){ 
-            //     db.collection("users").doc(user.uid).set({
-            //         first: firstN,
-            //         last: lastN,
-            //         username: userN,
-            //     });
-            // }
-            window.location.href = 'userAccount.html';
+            location.href= "/userAccount.html";
         });
-    // }), true;
 
     }), true;
 });

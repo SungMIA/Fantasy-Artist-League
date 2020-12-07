@@ -1,43 +1,58 @@
-export const loadHeader = function() {
-    let header = $('#header');
-    let title = '<h1 id = "title">Playlist Visualizer</h1>'
-    let collection = '<h3 id="collection">My Collection </h3>';
-    let logout = '<button class = "button" id="logout">Logout</button>';
-    $(header).append(title, collection, logout);
 
-    return header;
+export const renderUserCard = function(doc) {
+    let result = $('#searchResult');
+    let userName = doc.username;
+    let name = '<div class="name" id="'+userName+'">'+userName+'</div>';
+
+    $(result).append(name);
+    return result;
 }
 
-export const renderSearchBar = function() {
-    let root = $('#root');
-    let form = $('<form autocomplete="off" class ="searchForm"></form>');
-    let label = '<label for="userInput" class="label">Search</label>';
-    let search = '<div class ="autocomplete"><input class = "userInput" type="text" placeholder="Search your favorite artists..." name="searching"><button id = "search" type="submit"><i class="fa fa-search"></i></button></div>';
-    let result = '<table class ="content"><div id="results"></div></table>';
-    $(form).append(label, search, result);
-    $(root).append(form);
+export const renderEditUserCard = function(user) {
+    let editCard = $('#editCard');
+    let editInput = $('<div id="editInput">');
+    let editContent = $('<form id="editForm"></form>');
+    let editTitle = '<h1 class="editTitle">Edit Your Account Information</h1>';
+    $(editInput).append(editTitle);
+    let editUserName = '<div class="field"><label class="editLabel">Username: </label><input class="editing" id="'+user.username+'" value="'+user.username+'"></div>';
+    let editFirst = '<div class"field"><label class="editLabel">First Name: </label><input class="editing" id="'+user.first+'" value="'+user.first+'"></div>';
+    let editLast = '<div class="field"><label class="editLabel">Last Name: </label><input class="editing" id="'+user.last+'" value="'+user.last+'"></div>';
+    let editEmail = '<div class="field"><label class="editLabel">Email: </label><input class= "editing" id="'+user.email+'" value="'+user.email+'"></div>';
+    $(editContent).append(editUserName, editFirst, editLast, editEmail);
 
-    return root;
+    let cancel = '<button id="cancelEdit" type="button">Cancel</button>';
+    let save = '<button id="saveEdit" type="submit">Save</button>';
+    $(editContent).append(cancel, save);
 
+    $(editInput).append(editContent);
+    $(editCard).append(editInput);
+    return editCard;
 }
-
-export const autocompletion = async function(event) {
-        
+export const handleSubmitSearch = function(event) {
+    event.preventDefault();
+    let searchingFor = document.getElementById("userInput");
+    firebase.firestore().collection("users").where("username", "==", searchingFor.value)
+    .get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            let userData = doc.data();
+            renderUserCard(userData);
+        })
+    })
 }
-
-export const renderPage = function() {
-    loadHeader();
-    renderSearchBar();
-}
-
 export const handleLogoutButton = function(event) {
     event.preventDefault();
-    firebase.auth().signOut().then(function() {
-        window.location.href = "index.html";
-    }).catch(errror => { });
+    firebase.auth().signOut();
+    location.href = "/index.html";
 }
 
-$(function() {
-    renderPage();
+export const handleEditButton = function(event) {
+    let user = event.target;
+    renderEditUserCard(user);
+}
+
+
+$(document).ready(function() {
     $('#logout').on('click', handleLogoutButton);
+    $('#submitSearch').on('click', handleSubmitSearch);
+    $('#edit').on('click', handleEditButton);
 });
