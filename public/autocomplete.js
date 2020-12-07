@@ -108,7 +108,8 @@ firebase.firestore().collection("users").doc().get().then(function (input) {
     });
 });
 
-autocomplete(document.getElementById("userInput"), users);
+let inp = document.getElementById("userInput");
+autocomplete(inp, users);
 
 
 document.getElementById("search").addEventListener('click', e => {
