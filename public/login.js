@@ -8,9 +8,7 @@ $(function() {
         let mail = email.value;
         let pass = password.value;
         
-        firebase 
-        .auth()
-        .signInWithEmailAndPassword(mail, pass)
+    firebase.auth().signInWithEmailAndPassword(mail, pass)
         .then((user) => {
             // if(user){ 
             //     db.collection("users").doc(user.uid).set({
@@ -19,21 +17,9 @@ $(function() {
             //         username: userN,
             //     });
             // }
-            window.location.href = 'index.html';
-        })
-        .catch((error) => {
-            var errorCord = error.code;
-            var errorMessage = error.message;
+            window.location.href = 'userAccount.html';
         });
     // }), true;
 
-
-        firebase.auth().onAuthStateChanged(firebaseUser => {
-            if (firebaseUser){
-                // signed in
-            } else {
-                // not signed in
-            }
-        });
     }), true;
 });

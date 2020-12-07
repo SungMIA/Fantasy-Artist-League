@@ -1,5 +1,5 @@
 
-let container = document.querySelector('.container');
+let container = document.querySelector('.container')
 let recentCovers = []
 let token = ""
 let involved = []
@@ -174,17 +174,20 @@ let changeSide = (cube) => {
 // Event Delegation Implementation:
 container.addEventListener('mouseenter', event => {
   let basicClass = event.target.className.substring(0, 4);
-  let id = event.target.parentNode.id
+  let id = event.target.id
   let cube = event.target;
   console.log(id)
   console.log(basicClass)
   if((basicClass === "cube") && (id != "c7")) {
     changeSide(cube);
   } else {
-    console.log("here")
-    setInterval(function(){changeSide(cube)},3000);
+    setTimeout(function (){
+    console.log("here");
+    changeSide(cube);
+    }, 1500);
   };
 }, true);
+
 
 async function retrieveCubes() {
   // axios method to retrieve random song data, retrieve 50
@@ -270,6 +273,4 @@ $(function() {
   loadCover();
   loadPage();
   $('#c7 .cube__face--front').append("<a href='signup.html'>Create New Account</a>");
-  let cube = document.getElementById('#c7')
-  changeSide(cube)
 });

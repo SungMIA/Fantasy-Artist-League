@@ -4,6 +4,7 @@
 const auth = firebase.auth();
 
 const db = firebase.firestore();
+const users = db.collection("users");
 const usersCollection = db.collection("users");
 
 const firebaseConfig = {
@@ -17,6 +18,9 @@ const firebaseConfig = {
     measurementId: "G-26RTVNF95G"
   };
 
+const firebase = require('firebase');
+const firestore = require('firebase/firestore')
 firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
-module.exports = {db, usersCollection, auth};
+module.exports = {admin, db, firestore, firebase, database, users, auth};
