@@ -7,10 +7,9 @@ body {
 }
 
 .container {
-    /* padding-top: vw; */
     padding-left: 27vw;
     display: grid;
-    gap: 2vw;
+    gap: 1.5vw;
     grid-template-columns: repeat(5, 8vw);
     grid-template-rows: repeat(5, 8vw);
 }
@@ -72,7 +71,7 @@ div.titles {
 
 }
 
-.cube__face--front  {  background-size: 100%; }
+.cube__face--front  {  background: hsla(0, 100%, 50%, 1); }
   /* background-image: url("https://i.scdn.co/image/966ade7a8c43b72faa53822b74a899c675aaafee"); } */
 .cube__face--right  { background: hsla( 60, 100%, 50%, 1); }
 .cube__face--back   { background: hsla(120, 100%, 50%, 1); }
@@ -100,13 +99,14 @@ div.titles {
   padding-top: 2vw !important;
 }
 
+#c7 .cube__face--back {
+  padding-top: 2.5vw;
+}
+
 #c7 .cube__face div {
   display: none !important;
 }
 
-#c7 .cube__face--front {
-  content: "Sign Up" !important;
-}
 
 #c7 .cube__face h3 {
   font-size: 3vw;

@@ -5,9 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Fantasy Artist League</title>
-    <script src="/__/firebase/8.1.1/firebase-app.js"></script>
-    <script src="/__/firebase/8.1.1/firebase-auth.js"></script>
-    <script src="/__/firebase/8.1.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+ <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+ <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+        apiKey: "AIzaSyD3B4pVY_hz-8nPstgjKXv-EX-5dq49I2U",
+        authDomain: "fantasy-artist-league.firebaseapp.com",
+        databaseURL: "https://fantasy-artist-league.firebaseio.com",
+        projectId: "fantasy-artist-league",
+        storageBucket: "fantasy-artist-league.appspot.com",
+        messagingSenderId: "691127190203",
+        appId: "1:691127190203:web:e6ca654860f6381b2b9f9e",
+        measurementId: "G-26RTVNF95G"
+    };
+
+firebase.initializeApp(firebaseConfig);
+
+</script>
 
 </head>
 <body>
@@ -16,6 +37,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src ="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module"src="main.js"></script>
-    <script src="__/firebase/init.js"></script>
+    <!-- <script src="__/firebase/init.js"></script> -->
 </body>
 </html>
