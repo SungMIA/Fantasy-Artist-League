@@ -14,6 +14,11 @@ $(function() {
         let userN = userName.value;
         let mail = email.value;
         let pass = password.value;
+<<<<<<< HEAD
+        let uid = null;
+        
+        firebase.auth().createUserWithEmailAndPassword(mail, pass);
+=======
         function create() {
             firebase.auth().createUserWithEmailAndPassword(mail, pass)
         }
@@ -29,6 +34,7 @@ $(function() {
             })
         }
         $.when(create()).then(store())
+>>>>>>> 5b1e36ff16061fce4f4d1f9e989bbf4de5fcd010
         //
         // RIGHT HERE:
         // 
@@ -37,7 +43,16 @@ $(function() {
         // it says currentUser is null. 
         // I want to: run the firestore line AFTER createUserWith... successfully terminates
         // Think i just have to use callback function 
+<<<<<<< HEAD
+        firebase.firestore().collection("users").doc().set({
+            first: firstN,
+            last: lastN,
+            username: userN,
+            email: mail
+        });
+=======
         
+>>>>>>> 5b1e36ff16061fce4f4d1f9e989bbf4de5fcd010
             // let user = userCreds.user;
             // if(user){ 
             //     firebase.database().collection("users").doc(user.uid).set({
@@ -46,5 +61,7 @@ $(function() {
             //         username: userN,
             //     });
             // }
+
+        window.location.href = 'userAccount.html';
     }, true);
 });

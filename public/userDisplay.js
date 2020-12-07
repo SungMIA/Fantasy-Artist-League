@@ -10,10 +10,10 @@ export const loadHeader = function() {
 
 export const renderSearchBar = function() {
     let root = $('#root');
-    let form = $('<form class ="searchForm"></form>');
-    let search = '<input id = "userInput" type="text" placeholder="Search your favorite artists..." name="search"><button id = "search" type="submit"><i class="fa fa-search"></i></button>';
-
-    $(form).append(search);
+    let form = $('<form autocomplete="off" class ="searchForm"></form>');
+    let search = '<div class ="autocomplete"><input id = "userInput" type="text" placeholder="Search your favorite artists..." name="searching"><button id = "search" type="submit"><i class="fa fa-search"></i></button></div>';
+    let result = '<table class ="content"><div id="results"></div></table>';
+    $(form).append(search, result);
     $(root).append(form);
 
     return root;
@@ -21,26 +21,7 @@ export const renderSearchBar = function() {
 }
 
 export const autocompletion = async function(event) {
-        let value = $(this).val();
-        let artistNames;
-
-       await  $.ajax({
-            type: 'GET',
-            url: 'https://api.spotify.com/v1/search',
-            dataType: 'json',
-            data: {
-                type: 'artist',
-                q: value
-            }
-        }).then(function(res) {
-            artistNames = res.artists.items.map(function(artist) {
-                return artist.name;
-            })
-        });
-
-        $('#userInput').autocomplete({
-            source: artistNames
-        });     
+        
 }
 
 export const renderPage = function() {
@@ -57,6 +38,5 @@ export const handleLogoutButton = function(event) {
 
 $(function() {
     renderPage();
-    $('#userInput').on('keyup', autocompletion);
     $('#logout').on('click', handleLogoutButton);
 });
