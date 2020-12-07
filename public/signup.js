@@ -47,13 +47,4 @@ $(function() {
             //     });
             // }
     }, true);
-
-
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-        if (firebaseUser) {
-
-        } else {
-            let fail = '<span class="has-text-danger">You have not logged in successfully.</span>';
-        }
-    })
 });
