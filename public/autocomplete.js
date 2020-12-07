@@ -1,4 +1,5 @@
 // created by w3schools
+let inp = document.getElementById("userInput")
 
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
@@ -101,25 +102,26 @@ function autocomplete(inp, arr) {
 
 let users = ["sung", "helen"];
 
-firebase.firestore().collection("users").doc().get().then(function (input) {
-    input.forEach(function(doc) {
-        let data = doc.data().username;
-        users.push(data);
-    });
-});
+// firebase.firestore().collection("users").doc().get().then(function (input) {
+//     input.forEach(function(doc) {
+//         let data = doc.data().username;
+//         users.push(data);
+//     });
+// });
 
-let inp = document.getElementById("userInput");
+// let inp = $('#userInput').val()
+console.log(inp)
 autocomplete(inp, users);
 
 
-document.getElementById("search").addEventListener('click', e => {
-    e.preventDefault();
-    let search = document.getElementById('userInput');
-    firebase.firestore().collection("users").doc().where("username", "==", search.value)
-    .get().then(function(input) {
-        input.forEach(function (doc) {
-            $('#results').html('<div class="searchResult"><div class="searchSubmit">'+doc.data().username+'</div></div>');
-        });
-    });
-});
+// document.getElementById("search").addEventListener('click', e => {
+//     e.preventDefault();
+//     let search = document.getElementById('userInput');
+//     firebase.firestore().collection("users").doc().where("username", "==", search.value)
+//     .get().then(function(input) {
+//         input.forEach(function (doc) {
+//             $('#results').html('<div class="searchResult"><div class="searchSubmit">'+doc.data().username+'</div></div>');
+//         });
+//     });
+// });
 

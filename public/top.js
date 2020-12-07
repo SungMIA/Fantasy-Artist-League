@@ -1,4 +1,3 @@
-
 let container = document.querySelector('.container')
 let recentCovers = []
 let token = ""
@@ -35,7 +34,7 @@ async function loadCover() {
   let token = req.data.access_token
   let request = await axios({
     method: 'get',
-    url: 'https://api.spotify.com/v1/browse/new-releases?country=US&limit=6',
+    url: 'https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks?offset=0&limit=6&market=US',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -43,7 +42,7 @@ async function loadCover() {
     }
   })
   for(let i=0; i<6; i++) {
-    let album = request.data.albums.items[i]
+    let album = request.data.items[i].track.album
     let cover = album.images[0].url
     let artists = album.artists
     let length = artists.length
@@ -65,7 +64,6 @@ async function loadCover() {
     switch(i) {
       case (i=0):
         $('.cube__face--front').css('background-image', 'url('+cover+')')
-        $('.cube__face--front').attr("id", cover)
         $('.cube__face--front').css('background-size', 'cover')
         $('.cube__face--front').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--front').css('line-height', '1.5vw')
@@ -76,7 +74,6 @@ async function loadCover() {
         break;
       case (i=1):
         $('.cube__face--right').css('background-image', 'url('+cover+')')
-        $('.cube__face--right').attr("id", cover)
         $('.cube__face--right').css('background-size', 'cover')
         $('.cube__face--right').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--right').css('line-height', '2vw')
@@ -87,7 +84,6 @@ async function loadCover() {
         break;
       case (i=2):
         $('.cube__face--back').css('background-image', 'url('+cover+')')
-        $('.cube__face--back').attr("id", cover)
         $('.cube__face--back').css('background-size', 'cover')
         $('.cube__face--back').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--back').css('line-height', '2vw')
@@ -98,7 +94,6 @@ async function loadCover() {
         break;
       case (i=3):
         $('.cube__face--left').css('background-image', 'url('+cover+')')
-        $('.cube__face--left').attr("id", cover)
         $('.cube__face--left').css('background-size', 'cover')
         $('.cube__face--left').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--left').css('line-height', '2vw')
@@ -109,7 +104,6 @@ async function loadCover() {
         break;
       case (i=4):
         $('.cube__face--top').css('background-image', 'url('+cover+')')
-        $('.cube__face--top').attr("id", cover)
         $('.cube__face--top').css('background-size', 'cover')
         $('.cube__face--top').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--top').css('line-height', '2vw')
@@ -120,7 +114,6 @@ async function loadCover() {
         break;
       case (i=5):
         $('.cube__face--bottom').css('background-image', 'url('+cover+')')
-        $('.cube__face--bottom').attr("id", cover)
         $('.cube__face--bottom').css('background-size', 'cover')
         $('.cube__face--bottom').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--bottom').css('line-height', '2vw')
@@ -186,21 +179,14 @@ container.addEventListener('mouseenter', event => {
   console.log(basicClass)
   if((basicClass === "cube")) {
     changeSide(cube);
-  }
-  // } else {
-  //   setTimeout(function (){
-  //   console.log("here");
-  //   changeSide(cube);
-  //   }, 1500);
+  } 
+//   else {
+//     setTimeout(function (){
+//     console.log("here");
+//     changeSide(cube);
+//     }, 1500);
+//   };
 }, true);
-
-// container.addEventListener('click', event => {
-//     let id = event.target.id
-//     firebase.auth().onAuthStateChanged(function(user) {
-//     if (user) {
-//         firebase.firestore().collection("users").doc(user.uid).set(id);
-//     }
-// }, true);
 
 
 async function retrieveCubes() {

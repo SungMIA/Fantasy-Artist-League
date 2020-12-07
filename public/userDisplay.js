@@ -11,8 +11,8 @@ export const loadHeader = function() {
 export const renderSearchBar = function() {
     let root = $('#root');
     let form = $('<form autocomplete="off" class ="searchForm"></form>');
-    let search = '<div class ="autocomplete"><input id = "userInput" type="text" placeholder="Search your favorite artists..." name="searching"><button id = "search" type="submit"><i class="fa fa-search"></i></button></div>';
-    let result = '<table class ="content"><div id="results"></div></table>';
+    let search = $('<div class ="autocomplete"><input id="userInput" type="text" placeholder="Search your favorite artists..." name="searching"><button id = "search" type="submit"><i class="fa fa-search"></i></button></div>');
+    let result = $('<table class ="content"><div id="results"></div></table>');
     $(form).append(search, result);
     $(root).append(form);
 
@@ -20,9 +20,9 @@ export const renderSearchBar = function() {
 
 }
 
-export const autocompletion = async function(event) {
+// export const autocompletion = async function(event) {
         
-}
+// }
 
 export const renderPage = function() {
     loadHeader();
@@ -33,7 +33,7 @@ export const handleLogoutButton = function(event) {
     event.preventDefault();
     firebase.auth().signOut().then(function() {
         window.location.href = "index.html";
-    }).catch(errror => { });
+    }).catch(error => { });
 }
 
 $(function() {
