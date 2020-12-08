@@ -202,12 +202,17 @@ container.addEventListener('click', event => {
     console.log(child)
     firebase.auth().onAuthStateChanged(function(user) {
       if (user && (check != "c")) {
-          console.log("Here")
-          i++
-          let x = i + "i"
-          firebase.firestore().collection("users").doc(user.uid).set({
-            songs: {[i]: child, [x]: id}
-          }, {merge: true});
+          firebase.firestore().collection("users").doc(user.uid).get().then(function(doc) {
+            let songs = doc.data().songs
+            if(songs) {
+              i = (Object.keys(songs).length)/2
+            }
+            i++
+            let x = i + "i"
+            firebase.firestore().collection("users").doc(user.uid).set({
+              songs: {[i]: child, [x]: id}
+            }, {merge: true});
+          });
       }
     })
 });
@@ -298,4 +303,7 @@ $(function() {
   loadPage();
   $('#c7 .cube__face--front').append("<a href='signup.html'>Create New Account</a>");
   $('#c7 .cube__face--back').append("<a href='top.html'>USA Top 50</a>");
-});
+  $('#c7 .cube__face--left').append("<a href='current.html'>My Songs</a>");
+  $('#c7 .cube__face--right').append("<a href='index.html'>New Releases</a>");
+  $('#c7 .cube__face--top').append("<a href='login.html'>Log In</a>");
+}); 

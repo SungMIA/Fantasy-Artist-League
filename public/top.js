@@ -64,6 +64,7 @@ async function loadCover() {
     switch(i) {
       case (i=0):
         $('.cube__face--front').css('background-image', 'url('+cover+')')
+        $('.cube__face--front').attr("id", cover)
         $('.cube__face--front').css('background-size', 'cover')
         $('.cube__face--front').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--front').css('line-height', '1.5vw')
@@ -74,6 +75,7 @@ async function loadCover() {
         break;
       case (i=1):
         $('.cube__face--right').css('background-image', 'url('+cover+')')
+        $('.cube__face--right').attr("id", cover)
         $('.cube__face--right').css('background-size', 'cover')
         $('.cube__face--right').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--right').css('line-height', '2vw')
@@ -84,6 +86,7 @@ async function loadCover() {
         break;
       case (i=2):
         $('.cube__face--back').css('background-image', 'url('+cover+')')
+        $('.cube__face--back').attr("id", cover)
         $('.cube__face--back').css('background-size', 'cover')
         $('.cube__face--back').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--back').css('line-height', '2vw')
@@ -94,6 +97,7 @@ async function loadCover() {
         break;
       case (i=3):
         $('.cube__face--left').css('background-image', 'url('+cover+')')
+        $('.cube__face--left').attr("id", cover)
         $('.cube__face--left').css('background-size', 'cover')
         $('.cube__face--left').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--left').css('line-height', '2vw')
@@ -104,6 +108,7 @@ async function loadCover() {
         break;
       case (i=4):
         $('.cube__face--top').css('background-image', 'url('+cover+')')
+        $('.cube__face--top').attr("id", cover)
         $('.cube__face--top').css('background-size', 'cover')
         $('.cube__face--top').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--top').css('line-height', '2vw')
@@ -114,6 +119,7 @@ async function loadCover() {
         break;
       case (i=5):
         $('.cube__face--bottom').css('background-image', 'url('+cover+')')
+        $('.cube__face--bottom').attr("id", cover)
         $('.cube__face--bottom').css('background-size', 'cover')
         $('.cube__face--bottom').append('<div>'+title+'<br>'+a+'</div>')
         $('.cube__face--bottom').css('line-height', '2vw')
@@ -179,14 +185,29 @@ container.addEventListener('mouseenter', event => {
   console.log(basicClass)
   if((basicClass === "cube")) {
     changeSide(cube);
-  } 
-//   else {
-//     setTimeout(function (){
-//     console.log("here");
-//     changeSide(cube);
-//     }, 1500);
-//   };
-}, true);
+  }
+  }, true);
+
+let i=0;
+container.addEventListener('click', event => {
+  let id = event.target.id
+  let check = event.target.id.substring(0,1)
+  let child = event.target.querySelector('div').innerText
+  console.log(child)
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user && (check != "c")) {
+      firebase.firestore().collection("users").doc(user.uid).get().then(function(doc) {
+        let songs = doc.data().songs
+        i = (Object.keys(songs).length)/2
+        i++
+        let x = i + "i"
+        firebase.firestore().collection("users").doc(user.uid).set({
+          songs: {[i]: child, [x]: id}
+        }, {merge: true});
+      })
+    }
+});
+})
 
 
 async function retrieveCubes() {
@@ -274,5 +295,7 @@ $(function() {
   loadPage();
   $('#c7 .cube__face--front').append("<a href='signup.html'>Create New Account</a>");
   $('#c7 .cube__face--back').append("<a href='top.html'>USA Top 50</a>");
-  $
+  $('#c7 .cube__face--left').append("<a href='current.html'>My Songs</a>");
+  $('#c7 .cube__face--right').append("<a href='index.html'>New Releases</a>");
+  $('#c7 .cube__face--top').append("<a href='login.html'>Log In</a>");
 });
