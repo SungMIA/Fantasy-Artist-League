@@ -19,128 +19,118 @@ const serialize = function(obj) {
   
 //   console.log(request.data.access_token)
 // }
-
-async function loadCover() {
-//   let req = await axios({
-//     method: 'post',
-//     url: 'https://accounts.spotify.com/api/token',
-//     headers: {
-//       'Authorization': 'Basic ' + btoa(('cabfb3a7a5674d6caf828301b83073a2:8ff57e3fa6824df4855758bd5fb7e249'))
-//     },
-//     data: (serialize({
-//       grant_type : 'client_credentials'
-//     }))
-//   })
-//   let token = req.data.access_token
-//   let request = await axios({
-//     method: 'get',
-//     url: 'https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks?offset=0&limit=6&market=US',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//       'Authorization': 'Bearer '+token
-//     }
-//   })
-    let songs;
-    function mySongs() {
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                firebase.firestore().collection("users").doc(user.uid).get().then(function(doc) {
-                    if(doc.exists) {
-                        songs = doc.data().songs
-                    }
-                })
-            }
-        });
-    }
-    function addSongs() {
-        for(let i=1; i<7; i++) {
-            let album = songs;
-            let x = i + "i"
-            let cover = album[x]
-            // let artists = album[i]
-            // let length = artists.length
-            let title = album[i]
-            let a = ""
-            // for(let j=0; j<length; j++) {
-            //   if(j+1 >= length) {
-            //     a += artists[j].name
-            //   } else {
-            //     a += artists[j].name+"+"
-            //   }
-            // }
-            // involved[i] = a
-            titles[i] = title
-            console.log(album)
-            console.log(a)
-            console.log(title)
-            recentCovers[i] = cover; 
-            switch(i) {
-              case (i=0):
-                $('.cube__face--front').css('background-image', 'url('+cover+')')
-                $('.cube__face--front').css('background-size', 'cover')
-                $('.cube__face--front').append('<div>'+title+'<br>'+a+'</div>')
-                $('.cube__face--front').css('line-height', '1.5vw')
-                $('.cube__face--front').css('font-size', '0.7vw')
-                $('.cube__face--front').css('text-align', 'center')
-                $('.cube__face--front').css('padding-top', '2vw')
-                $('.cube__face--front').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
-                break;
-              case (i=1):
-                $('.cube__face--right').css('background-image', 'url('+cover+')')
-                $('.cube__face--right').css('background-size', 'cover')
-                $('.cube__face--right').append('<div>'+title+'<br>'+a+'</div>')
-                $('.cube__face--right').css('line-height', '2vw')
-                $('.cube__face--right').css('font-size', '0.7vw')
-                $('.cube__face--right').css('text-align', 'center')
-                $('.cube__face--right').css('padding-top', '2.5vw')
-                $('.cube__face--right').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
-                break;
-              case (i=2):
-                $('.cube__face--back').css('background-image', 'url('+cover+')')
-                $('.cube__face--back').css('background-size', 'cover')
-                $('.cube__face--back').append('<div>'+title+'<br>'+a+'</div>')
-                $('.cube__face--back').css('line-height', '2vw')
-                $('.cube__face--back').css('font-size', '0.7vw')
-                $('.cube__face--back').css('text-align', 'center')
-                $('.cube__face--back').css('padding-top', '2.5vw')
-                $('.cube__face--back').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
-                break;
-              case (i=3):
-                $('.cube__face--left').css('background-image', 'url('+cover+')')
-                $('.cube__face--left').css('background-size', 'cover')
-                $('.cube__face--left').append('<div>'+title+'<br>'+a+'</div>')
-                $('.cube__face--left').css('line-height', '2vw')
-                $('.cube__face--left').css('font-size', '0.7vw')
-                $('.cube__face--left').css('text-align', 'center')
-                $('.cube__face--left').css('padding-top', '2.5vw')
-                $('.cube__face--left').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
-                break;
-              case (i=4):
-                $('.cube__face--top').css('background-image', 'url('+cover+')')
-                $('.cube__face--top').css('background-size', 'cover')
-                $('.cube__face--top').append('<div>'+title+'<br>'+a+'</div>')
-                $('.cube__face--top').css('line-height', '2vw')
-                $('.cube__face--top').css('font-size', '0.7vw')
-                $('.cube__face--top').css('text-align', 'center')
-                $('.cube__face--top').css('padding-top', '2.5vw')
-                $('.cube__face--top').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
-                break;
-              case (i=5):
-                $('.cube__face--bottom').css('background-image', 'url('+cover+')')
-                $('.cube__face--bottom').css('background-size', 'cover')
-                $('.cube__face--bottom').append('<div>'+title+'<br>'+a+'</div>')
-                $('.cube__face--bottom').css('line-height', '2vw')
-                $('.cube__face--bottom').css('font-size', '0.7vw')
-                $('.cube__face--bottom').css('text-align', 'center')
-                $('.cube__face--bottom').css('padding-top', '2.5vw')
-                $('.cube__face--bottom').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
-                break;
+let songs;
+container.addEventListener('click', event => {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      firebase.firestore().collection("users").doc(user.uid).get().then(function(doc) {
+          if(doc.exists) {
+              songs = doc.data().songs
+              console.log(songs)
+          }
+          let z = 0;
+          function length(){
+            z = (Object.keys(songs).length)/2
+          } 
+          function wut(){
+            if(z > 6) {
+              z = 6;
             }
           }
-    }
-    $.when(mySongs()).then(addSongs());
-}
+          $.when(length()).then(wut())
+          
+          console.log(z)
+          for(let i=0; i<z; i++) {
+              let album = songs;
+              let x = i + "i"
+              let cover = album[x]
+              // let artists = album[i]
+              // let length = artists.length
+              let title = album[i]
+              console.log(cover)
+              console.log(title)
+              let a = ""
+              titles[i] = title
+              recentCovers[i] = cover; 
+              switch(i) {
+                default:
+                  break;
+                case (i=0):
+                  $('.cube__face--front').css('background-image', 'url('+cover+')')
+                  $('.cube__face--front').css('background-size', 'cover')
+                  $('.cube__face--front').append('<div>'+title+'<br>'+a+'</div>')
+                  $('.cube__face--front').css('line-height', '1.5vw')
+                  $('.cube__face--front').css('font-size', '0.7vw')
+                  $('.cube__face--front').css('text-align', 'center')
+                  $('.cube__face--front').css('padding-top', '2vw')
+                  $('.cube__face--front').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+                  break;
+                case (i=1):
+                  $('.cube__face--right').css('background-image', 'url('+cover+')')
+                  $('.cube__face--right').css('background-size', 'cover')
+                  $('.cube__face--right').append('<div>'+title+'<br>'+a+'</div>')
+                  $('.cube__face--right').css('line-height', '2vw')
+                  $('.cube__face--right').css('font-size', '0.7vw')
+                  $('.cube__face--right').css('text-align', 'center')
+                  $('.cube__face--right').css('padding-top', '2.5vw')
+                  $('.cube__face--right').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+                  break;
+                case (i=2):
+                  $('.cube__face--back').css('background-image', 'url('+cover+')')
+                  $('.cube__face--back').css('background-size', 'cover')
+                  $('.cube__face--back').append('<div>'+title+'<br>'+a+'</div>')
+                  $('.cube__face--back').css('line-height', '2vw')
+                  $('.cube__face--back').css('font-size', '0.7vw')
+                  $('.cube__face--back').css('text-align', 'center')
+                  $('.cube__face--back').css('padding-top', '2.5vw')
+                  $('.cube__face--back').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+                  break;
+                case (i=3):
+                  $('.cube__face--left').css('background-image', 'url('+cover+')')
+                  $('.cube__face--left').css('background-size', 'cover')
+                  $('.cube__face--left').append('<div>'+title+'<br>'+a+'</div>')
+                  $('.cube__face--left').css('line-height', '2vw')
+                  $('.cube__face--left').css('font-size', '0.7vw')
+                  $('.cube__face--left').css('text-align', 'center')
+                  $('.cube__face--left').css('padding-top', '2.5vw')
+                  $('.cube__face--left').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+                  break;
+                case (i=4):
+                  $('.cube__face--top').css('background-image', 'url('+cover+')')
+                  $('.cube__face--top').css('background-size', 'cover')
+                  $('.cube__face--top').append('<div>'+title+'<br>'+a+'</div>')
+                  $('.cube__face--top').css('line-height', '2vw')
+                  $('.cube__face--top').css('font-size', '0.7vw')
+                  $('.cube__face--top').css('text-align', 'center')
+                  $('.cube__face--top').css('padding-top', '2.5vw')
+                  $('.cube__face--top').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+                  break;
+                case (i=5):
+                  $('.cube__face--bottom').css('background-image', 'url('+cover+')')
+                  $('.cube__face--bottom').css('background-size', 'cover')
+                  $('.cube__face--bottom').append('<div>'+title+'<br>'+a+'</div>')
+                  $('.cube__face--bottom').css('line-height', '2vw')
+                  $('.cube__face--bottom').css('font-size', '0.7vw')
+                  $('.cube__face--bottom').css('text-align', 'center')
+                  $('.cube__face--bottom').css('padding-top', '2.5vw')
+                  $('.cube__face--bottom').css('text-shadow', '-.05vw 0 black, 0 .05vw black, .05vw 0 black, 0 -0.05vw black')
+                  break;
+              }
+          }
+      });
+  }
+  })
+  // window.location('current.html')
+}, {once: true});
+// let songs;
+// async function loadCover() {
+//   let user = firebase.auth().currentUser
+//   console.log(user)
+    
+// };
+
+
+    
 
 let changeSide = (cube) => {
   let currentClass = (cube.classList).toString().substring(5);
@@ -191,8 +181,8 @@ container.addEventListener('mouseenter', event => {
   let basicClass = event.target.className.substring(0, 4);
   let id = event.target.id
   let cube = event.target;
-  console.log(id)
-  console.log(basicClass)
+  // console.log(id)
+  // console.log(basicClass)
   if((basicClass === "cube")) {
     changeSide(cube);
   } 
@@ -269,8 +259,8 @@ const cubeInterface = function(i) {
       gridColumn = 3;
       break;
   };
-  console.log(gridRow)
-  console.log(gridColumn)
+  // console.log(gridRow)
+  // console.log(gridColumn)
   $(cube).css("display", "grid")
   $(cube).css("grid-column", gridColumn)
   $(cube).css("grid-row", gridRow) 
@@ -286,7 +276,12 @@ const loadPage = async function() {
 }
 
 $(function() {
-  $.when(loadCover()).then(loadPage())
+  // $.when(loadCover()).then(loadPage())
+  loadPage()
+  $('.container').append('<h4>Click a square to see your songs</h4>')
   $('#c7 .cube__face--front').append("<a href='signup.html'>Create New Account</a>");
   $('#c7 .cube__face--back').append("<a href='top.html'>USA Top 50</a>");
+  $('#c7 .cube__face--left').append("<a href='current.html'>My Songs</a>");
+  $('#c7 .cube__face--right').append("<a href='index.html'>New Releases</a>");
+  $('#c7 .cube__face--top').append("<a href='login.html'>Log In</a>");
 });

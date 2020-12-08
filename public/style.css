@@ -111,8 +111,12 @@ div.titles {
 #c7 .cube__face h3 {
   font-size: 3vw;
   line-height: 1.5vw !important;
-  text-shadow: -.13vw 0 black, 0 .13vw black, .13vw 0 black, 0 -0.13vw black;
+  text-shadow: -.3vw 0 black, 0 .13vw black, .13vw 0 black, 0 -0.13vw black;
 
+}
+
+#h4 {
+  font-size: 5vw;
 }
 
 a:-webkit-any-link {
@@ -159,10 +163,14 @@ label { margin-right: 0px; }
     padding-top: 5vw !important;
   }
 
+  #c7 .cube__face--right{
+    padding-top: 4vw !important;
+  }
+
   #c7 .cube__face h3 {
     font-size: 5vw;
     line-height: 5vw !important;
-    text-shadow: -.13vw 0 black, 0 .13vw black, .13vw 0 black, 0 -0.13vw black;
+    text-shadow: -.13vw 0 black, 0 .13vw black, .13vw 0 black, 0 -0.13vw black !important;
   
   }
   
