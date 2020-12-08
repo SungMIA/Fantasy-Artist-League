@@ -3,8 +3,10 @@
   box-sizing: border-box;
 }
 
-html {
+html, body {
     background-color: lightskyblue;
+    height: 100%;
+    width: 100%;
 }
 
 h1 {
@@ -29,8 +31,11 @@ p {
     height: 50px;
     width: 100px;
     margin: 20px;
+    position: inherit;
 }
-
+#logout {
+    margin-right: 10%;
+}
 #submitSearch, #cancelEdit, #saveEdit {
     float: inherit;
     background-color: lightpink;
@@ -40,6 +45,7 @@ p {
     width: 100px;
     margin: 10px;
 }
+
 .editing {
     width: 50%;
     height: 30%;
@@ -58,8 +64,9 @@ p {
     width: 100vw;
 }
 
-body {
-  font: 16px Arial;  
+#resultUser, #result {
+    text-align: center;
+    align-content: center;
 }
 
 /*the container must be positioned relative:*/
