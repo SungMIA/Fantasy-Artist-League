@@ -298,4 +298,6 @@ $(function() {
   loadPage();
   $('#c7 .cube__face--front').append("<a href='signup.html'>Create New Account</a>");
   $('#c7 .cube__face--back').append("<a href='top.html'>USA Top 50</a>");
+  $('#c7 .cube__face--left').append("<a href='current.html'>My Songs</a>");
+  $('#c7 .cube__face--right').append("<a href='index.html'>New Releases</a>");
 });

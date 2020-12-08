@@ -274,5 +274,4 @@ $(function() {
   loadPage();
   $('#c7 .cube__face--front').append("<a href='signup.html'>Create New Account</a>");
   $('#c7 .cube__face--back').append("<a href='top.html'>USA Top 50</a>");
-  $
 });
