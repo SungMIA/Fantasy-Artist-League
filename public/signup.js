@@ -26,12 +26,12 @@ $(function() {
                         last: lastN,
                         username: userN,
                     });
-                    location.href = "/userAccount.html";
+                    // location.href = "/login.html";
                 }
             })
         }
         $.when(create()).then(store())
-        $('.container').append('<a href="/userAccount.html"">Edit</button>')
+        $('.container').append('<h2>You have successfully created an account. Now you can <a href="/login.html"">Login</a>.</h2>')
         //
         // RIGHT HERE:
         // 

@@ -285,4 +285,5 @@ $(function() {
   $('#c7 .cube__face--left').append("<a href='current.html'>My Songs</a>");
   $('#c7 .cube__face--right').append("<a href='index.html'>New Releases</a>");
   $('#c7 .cube__face--top').append("<a href='login.html'>Log In</a>");
+  $('#c7 .cube__face--bottom').append("<a href='/userAccount.html'>Account</a>");
 });

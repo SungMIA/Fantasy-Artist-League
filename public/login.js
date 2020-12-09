@@ -18,12 +18,12 @@ $(function() {
                 firebase.firestore().collection("users").doc(user.uid).get().then(function(doc) {
                     if (doc.exists) {
                         location.href = "/userAccount.html";
-                    } else {
-                        // alert stopped working
-                        // alert("Error: Incorrect Email or Password");
-                        $('#message').append('<h3>Incorrect Email or Password</h3>');
-                    }
-                });
+                    } 
+                }).catch(function(error) {
+                    // alert stopped working
+                    // alert("Error: Incorrect Email or Password");
+                    $('#message').append('<h3>Incorrect Email or Password</h3>');
+                })
             }
         });
     }

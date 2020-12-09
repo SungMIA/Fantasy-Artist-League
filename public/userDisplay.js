@@ -11,7 +11,7 @@ export const handleEditButton = function(event) {
                     // renderEditUserCard(doc.data()); //param: user
                     let editCard = $('#editCard');
                     let editInput = $('<div id="editInput">');
-                    let editContent = $('<form id="editForm"></form>');
+                    let editContent = $('<form autocomplete="off" id="editForm"></form>');
                     let editTitle = '<h1 class="editTitle">Edit Your Account Information</h1>';
                     $(editInput).append(editTitle);
                     let editUserName = '<div class="field"><label class="editLabel">Username: </label><input class="editing" id="newUsername" value="'+doc.data().username+'"></div>';
@@ -23,7 +23,7 @@ export const handleEditButton = function(event) {
                     // $(editContent).append(editEmail, editPass);
 
                     let cancel = '<button onclick="window.location.reload()" id="cancelEdit" type="button">Cancel</button>';
-                    let save = '<button id="saveEdit" type="submit">Save</button>';
+                    let save = '<button id="saveEdit" type="button">Save</button>';
                     $(editContent).append(cancel, save);
 
                     $(editInput).append(editContent);
@@ -48,24 +48,24 @@ export const handleMyHomeButton = function(event) {
 }
 
 export const handleSaveEditButton = function(event) {
-    let newFirst = document.getElementById("newFirst").value;
-    let newLast = document.getElementById("newLast").value;
-    let newUsername = document.getElementById("newUsername").value;
+    let userFirst = document.getElementById("newFirst");
+    let userLast = document.getElementById("newLast");
+    let userUsername = document.getElementById("newUsername");
 
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                firebase.firestore().collection("users").doc(user.uid).get().then(function(doc) {
-                    if (doc.exists) {
-                        firebase.firestore().collection("users").doc(user.uid).update({
-                            first: newFirst,
-                            last: newLast,
-                            username: newUsername,
-                        })
-                        location.href = "/userAccount.html";
-                    }
-                })
-            }
-        })
+    let newFirst = userFirst.value;
+    let newLast = userLast.value;
+    let newUsername = userUsername.value;
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            firebase.firestore().collection("users").doc(user.uid).update({
+                first: newFirst,
+                last: newLast,
+                username: newUsername,
+            })
+            location.href = "/userAccount.html";
+        }
+    })
 }
 
 $(document).ready(function() {
