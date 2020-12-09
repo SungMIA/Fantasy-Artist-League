@@ -38,7 +38,7 @@
 <p>Search Other Users:</p>
 
 <button id = "logout" type="submit">Logout</button>
-<button id = "edit" type="submit">Edit Account</button>
+<button id = "edit" type="button">Edit Account</button>
 
 <!--Make sure the form has the autocomplete function switched off:-->
 <form autocomplete="off">
@@ -155,7 +155,6 @@ function autocomplete(inp, arr) {
   });
 }
 
-/*An array containing all the country names in the world:*/
 var users = [];
 
 firebase.firestore().collection("users").get().then(function (querySnapshot) {
@@ -165,8 +164,20 @@ firebase.firestore().collection("users").get().then(function (querySnapshot) {
     });
 });
 
-/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), users);
+
+document.getElementById("submitSearch").addEventListener('click', event =>{
+    event.preventDefault();  
+    let searchText = document.getElementById('myInput');
+    firebase.firestore().collection("users")
+    .where("username", "==", searchText.value)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            $('#searchResult').html(`<div class="result"><td>${doc.data().username}</td> <td>${doc.data().songs}</td></div>`)
+        });
+    });
+});
 
 </script>
 

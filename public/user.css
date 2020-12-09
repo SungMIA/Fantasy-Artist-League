@@ -46,6 +46,18 @@ p {
     margin: 10px;
 }
 
+.result {
+    padding: 30px;
+    align-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: lightpink;
+    border-radius: 30px;
+    width: 50%;
+    height: 10%;
+    margin-left: 27%;
+    margin-top: 30px;
+}
 .editing {
     width: 50%;
     height: 30%;

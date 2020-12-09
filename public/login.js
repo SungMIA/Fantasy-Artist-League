@@ -28,6 +28,7 @@ $(function() {
         });
     }
     $.when(signin()).then(get())
+    // $.signin().get()
 
     }, true);
 });
