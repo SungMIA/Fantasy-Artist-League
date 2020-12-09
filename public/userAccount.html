@@ -39,6 +39,7 @@
 
 <button id = "logout" type="submit">Logout</button>
 <button id = "edit" type="button">Edit Account</button>
+<button id="myhome" type="button">My Songs</button>
 
 <!--Make sure the form has the autocomplete function switched off:-->
 <form autocomplete="off">
@@ -174,7 +175,7 @@ document.getElementById("submitSearch").addEventListener('click', event =>{
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            $('#searchResult').html(`<div class="result"><td>${doc.data().username}</td> <td>${doc.data().songs}</td></div>`)
+            $('#searchResult').html(`<div class="result"><h2 class="resultTitle">This is ${doc.data().username}'s email: ${doc.data().email}</td></div>`)
         });
     });
 });

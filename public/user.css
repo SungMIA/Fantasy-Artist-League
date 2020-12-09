@@ -7,6 +7,7 @@ html, body {
     background-color: lightskyblue;
     height: 100%;
     width: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 h1 {
@@ -23,7 +24,7 @@ p {
     margin-left: 10%;
 }
 
-#logout, #edit {
+#logout, #edit, #myhome {
     float: right;
     background-color: lightpink;
     color: white;

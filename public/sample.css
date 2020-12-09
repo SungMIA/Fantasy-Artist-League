@@ -4,6 +4,7 @@ html, body {
     height: 100%;
     background-color: #C7B8EA;
     text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .hero-body, .hero {
@@ -49,6 +50,7 @@ h1, h2 {color: black;}
 }
 
 .hero-foot {
+    margin-top: 70px;
     background-color: #9B97B2;
     height: 10vh;
 }
@@ -145,6 +147,7 @@ input[type=password]:focus {
     position: relative;
     padding: 20px;
 }
+
 
 .label {
     font-size: 25px;
