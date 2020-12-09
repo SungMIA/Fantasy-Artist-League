@@ -34,7 +34,8 @@ container.addEventListener('click', event => {
           } 
           function wut(){
             if(z > 6) {
-              z = 6;
+              z = 6
+              ;
             }
           }
           $.when(length()).then(wut())

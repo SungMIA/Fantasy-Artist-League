@@ -29,6 +29,7 @@ $(function() {
             })
         }
         $.when(create()).then(store())
+        $('.container').append('<a href="userAccount.html"">Edit</button>')
         //
         // RIGHT HERE:
         // 
