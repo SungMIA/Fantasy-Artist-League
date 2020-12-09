@@ -1,25 +1,34 @@
 $(function() {
 
-    let email = document.getElementById("email");
+    let useremail = document.getElementById("email");
     let password = document.getElementById("password");
     let loginButton = document.getElementById("login");
     
     loginButton.addEventListener("click", event => {
-        let mail = email.value;
+        let mail = useremail.value;
         let pass = password.value;
         
-    firebase.auth().signInWithEmailAndPassword(mail, pass)
-        .then((user) => {
-            // if(user){ 
-            //     db.collection("users").doc(user.uid).set({
-            //         first: firstN,
-            //         last: lastN,
-            //         username: userN,
-            //     });
-            // }
-            window.location.href = 'userAccount.html';
-        });
-    // }), true;
+    function signin() {
+        firebase.auth().signInWithEmailAndPassword(mail, pass);
+    }
 
-    }), true;
+    function get() {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                firebase.firestore().collection("users").doc(user.uid).get().then(function(doc) {
+                    if (doc.exists) {
+                        location.href = "/userAccount.html";
+                    } else {
+                        // alert stopped working
+                        // alert("Error: Incorrect Email or Password");
+                        $('#message').append('<h3>Incorrect Email or Password</h3>');
+                    }
+                });
+            }
+        });
+    }
+    $.when(signin()).then(get())
+    // $.signin().get()
+
+    }, true);
 });

@@ -7,10 +7,36 @@
         <link rel="stylesheet" href="sample.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
         <link href="https://fonts.googleapis.com/css?family=Shrikhand&display=swap" rel="stylesheet">
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+ <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+ <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+ <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+ <!-- Add Firebase products that you want to use -->
+ <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
+ <script>
+     const firebaseConfig = {
+    apiKey: "AIzaSyD3B4pVY_hz-8nPstgjKXv-EX-5dq49I2U",
+    authDomain: "fantasy-artist-league.firebaseapp.com",
+    databaseURL: "https://fantasy-artist-league.firebaseio.com",
+    projectId: "fantasy-artist-league",
+    storageBucket: "fantasy-artist-league.appspot.com",
+    messagingSenderId: "691127190203",
+    appId: "1:691127190203:web:e6ca654860f6381b2b9f9e",
+    measurementId: "G-26RTVNF95G"
+  };
+
+    firebase.initializeApp(firebaseConfig);
+
+ </script>
         <title>Login Page</title>
     </head>
 
     <body>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <section class="hero is-fullheight"> 
                     <div class="hero-head">
                         <header class="navbar is-transparent">
@@ -61,7 +87,7 @@
                             <br>
                             <div class="field">
                                 <div class="control">
-                                    <h3 id="message"></h3>
+                                    <div id="message"></div>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +99,7 @@
                         </div>
                     </div>
                 </section>
-        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src ="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="login.js" type="module"></script>
     </body>
 

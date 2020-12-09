@@ -1,101 +1,136 @@
+/* autocomplete css created by w3schools*/
+* {
+  box-sizing: border-box;
+}
+
 html, body {
-    width: 100vw;
-    height: 100vh;
     background-color: lightskyblue;
-    color: white;
-}
-
-#title, #collection {
-    margin-top: 3%;
-    text-align: center;
-}
-
-#logout {
-    text-align: center;
-    margin-right: 10%;
-    float: right;
-    height: 30px;
-    width: 70px;
-    background-color: pink;
-}
-
-form.searchForm input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    width: 55%;
-    background: #f1f1f1;
-    margin-top: 8%;
-    margin-left: 5%;
-
-}
-
-form.searchForm button {
-    float: right;
-    width: 10%;
-    padding: 10px;
-    background: pink;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    cursor: pointer;
-    margin-top: 8%;
-}
-
-form.searchForm::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-  /* autocomplete search bar css created byy w3schools*/
-
-  * { box-sizing: border-box; }
-  body {
-    font: 16px Arial;
-  }
-  .autocomplete {
-    /*the container must be positioned relative:*/
-    position: relative;
-    display: inline-block;
-  }
-  input {
-    border: 1px solid transparent;
-    background-color: #f1f1f1;
-    padding: 10px;
-    font-size: 16px;
-  }
-  input[type=text] {
-    background-color: #f1f1f1;
+    height: 100%;
     width: 100%;
-  }
-  input[type=submit] {
-    background-color: DodgerBlue;
-    color: #fff;
-  }
-  .autocomplete-items {
-    position: absolute;
-    border: 1px solid #d4d4d4;
-    border-bottom: none;
-    border-top: none;
-    z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
-    top: 100%;
-    left: 0;
-    right: 0;
-  }
-  .autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #fff;
-    border-bottom: 1px solid #d4d4d4;
-  }
-  .autocomplete-items div:hover {
-    /*when hovering an item:*/
-    background-color: #e9e9e9;
-  }
-  .autocomplete-active {
-    /*when navigating through the items using the arrow keys:*/
-    background-color: DodgerBlue !important;
-    color: #ffffff;
-  }
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+p {
+    margin-top: 4em;
+    margin-left: 10%;
+}
+
+.autocomplete {
+    margin-left: 10%;
+}
+
+#logout, #edit {
+    float: right;
+    background-color: lightpink;
+    color: white;
+    border-color: lightpink;
+    height: 50px;
+    width: 100px;
+    margin: 20px;
+    position: inherit;
+}
+#logout {
+    margin-right: 10%;
+}
+#submitSearch, #cancelEdit, #saveEdit {
+    float: inherit;
+    background-color: lightpink;
+    color: white;
+    border-color: lightpink;
+    height: 40px;
+    width: 100px;
+    margin: 10px;
+}
+
+.result {
+    padding: 30px;
+    align-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: lightpink;
+    border-radius: 30px;
+    width: 50%;
+    height: 10%;
+    margin-left: 27%;
+    margin-top: 30px;
+}
+.editing {
+    width: 50%;
+    height: 30%;
+}
+#editForm {
+    align-content: center;
+    text-align: center;
+    padding: 20px;
+}
+.field {
+    margin: 20px;
+}
+#editInput {
+    margin: 20px;
+    display: block;
+    width: 100vw;
+}
+
+#resultUser, #result {
+    text-align: center;
+    align-content: center;
+}
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: lightpink;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: lightpink !important; 
+  color: #ffffff; 
+}

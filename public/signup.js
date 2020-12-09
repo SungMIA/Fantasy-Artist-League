@@ -4,7 +4,7 @@ $(function() {
     let firstName= document.getElementById("first");
     let lastName = document.getElementById("last");
     let userName = document.getElementById("username");
-    let email = document.getElementById("email");
+    let userEmail = document.getElementById("email");
     let password = document.getElementById("password");
     let signupButton = document.getElementById("signup");
     
@@ -12,7 +12,7 @@ $(function() {
         let firstN = firstName.value;
         let lastN = lastName.value;
         let userN = userName.value;
-        let mail = email.value;
+        let mail = userEmail.value;
         let pass = password.value;
         function create() {
             firebase.auth().createUserWithEmailAndPassword(mail, pass)
@@ -21,10 +21,12 @@ $(function() {
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
                     firebase.firestore().collection("users").doc(user.uid).set({
+                        email: mail,
                         first: firstN,
                         last: lastN,
                         username: userN,
                     });
+                    location.href = "/userAccount.html";
                 }
             })
         }
@@ -48,6 +50,6 @@ $(function() {
             //     });
             // }
 
-        // window.location.href = 'userAccount.html';
+        // location.href = "/userAccount.html";
     }, true);
 });
